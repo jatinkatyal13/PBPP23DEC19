@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Students</h1>
+
+    <ol>
+      {% for i, student in enumerate(students) %}
+        <li> 
+          <a href="/students/{{ i + 1 }}">
+            {{ student['name'] }} 
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  </body>
+</html>
