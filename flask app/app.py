@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from scrapper import scrapSnapdeal
 
 app = Flask(__name__)
 
@@ -28,6 +29,17 @@ USERS = [
 @app.route('/')
 def index():
   return "Hello World"
+
+@app.route('/search')
+def search():
+  return render_template('search.html')
+
+@app.route('/result', methods = ['POST'])
+def result():
+  query = request.form.get('query')
+
+  result = scrapSnapdeal(query)
+  return render_template('result.html', result = result)
 
 @app.route('/students')
 def students():
